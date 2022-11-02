@@ -177,7 +177,7 @@ def get_outline(nodes):
 	
 	for i in range(len(nodes)):
 		transf_points = []
-		neighbouring_nodes) = [n for n in node_.nodes if n not in outline]
+		neighbouring_nodes = [n for n in node_.nodes if n not in outline]
 		if len(neighbouring_nodes) > 0:
 			for k, n_ in enumerate(neighbouring_nodes):
 				v_ = Vector.ByTwoPoints(node_.point, n_.point)

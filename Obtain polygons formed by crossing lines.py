@@ -177,14 +177,15 @@ def get_outline(nodes):
 	
 	for i in range(len(nodes)):
 		transf_points = []
-		neighbouring_nodes = [n for n in node_.nodes if n not in outline]
-		for k, n_ in enumerate(neighbouring_nodes):
-			v_ = Vector.ByTwoPoints(node_.point, n_.point)
-			# rotation in reference to Y axis and therefore -360
-			angle = -360 + Vector.AngleAboutAxis(Vector.YAxis(), v_, Vector.ZAxis())
-			transf_points.append([transform_point(n_.point, node_.point, angle) for x, n_ in enumerate(neighbouring_nodes) if k != x])
-		node_ = neighbouring_nodes[get_index_of_most_right_node(transf_points)]
-		outline.append(node_)
+		neighbouring_nodes) = [n for n in node_.nodes if n not in outline]
+		if len(neighbouring_nodes) > 0:
+			for k, n_ in enumerate(neighbouring_nodes):
+				v_ = Vector.ByTwoPoints(node_.point, n_.point)
+				# rotation in reference to Y axis and therefore -360
+				angle = -360 + Vector.AngleAboutAxis(Vector.YAxis(), v_, Vector.ZAxis())
+				transf_points.append([transform_point(n_.point, node_.point, angle) for x, n_ in enumerate(neighbouring_nodes) if k != x])
+			node_ = neighbouring_nodes[get_index_of_most_right_node(transf_points)]
+			outline.append(node_)
 		# it terminates when it meets the first node
 		if len(outline) > 2 and outline[0] in node_.nodes:
 			return outline
